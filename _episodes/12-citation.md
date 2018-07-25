@@ -1,5 +1,5 @@
 ---
-title: Citation
+title: "Supplemental: Citation"
 teaching: 2
 exercises: 0
 questions:
