@@ -1,5 +1,5 @@
 ---
-title: Licensing
+title: "Supplemental: Licensing"
 teaching: 5
 exercises: 0
 questions:
