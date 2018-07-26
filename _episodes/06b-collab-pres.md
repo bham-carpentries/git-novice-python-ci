@@ -15,5 +15,10 @@ The live coding will cover:
     - git push origin master
     - github: edit a file
     - git pull origin master
+    - github: edit a file
+    - emacs myfile.txt
+    - git commit
+    - git pull
+    - finish git merge
 
     
