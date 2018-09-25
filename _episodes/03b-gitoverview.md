@@ -6,6 +6,7 @@ questions:
 - "Demystifying Git"
 ---
 Live coding will cover:
+
      - git status
      - emacs myfile.txt
      - git status
@@ -26,4 +27,4 @@ Live coding will cover:
      - git status
 
      
-
+[Slides](https://github.com/bham-carpentries/git-novice/blob/gh-pages/_slides/SWCDemystifyingGit.pdf)
