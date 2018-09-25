@@ -7,6 +7,7 @@ questions:
 ---
 
 The live coding demonstration will cover:
+
     + git config --global user.name
     + git config --global user.email
     + git config --global core.editor emacs   # NOTE VIM/NANO
@@ -18,3 +19,4 @@ The live coding demonstration will cover:
     + ls -larth
     + ls .git
     
+[Slides](https://github.com/bham-carpentries/git-novice/blob/gh-pages/_slides/SWCGitIntro.pdf)
