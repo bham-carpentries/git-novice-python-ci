@@ -7,6 +7,7 @@ questions:
 ---
 
 The live coding will cover:
+
     - git remote -v
     - Github: Create new repo
     - Copy https URL
@@ -21,4 +22,4 @@ The live coding will cover:
     - git pull
     - finish git merge
 
-    
+[Slides](https://github.com/bham-carpentries/git-novice/blob/gh-pages/_slides/SWCCollaborating.pdf)
