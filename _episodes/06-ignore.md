@@ -194,29 +194,6 @@ nothing to commit, working directory clean
 > {: .solution}
 {: .challenge}
 
-> ## Ignoring all data Files in a Directory
->
-> Given a directory structure that looks like:
->
-> ~~~
-> results/data/position/gps/a.data
-> results/data/position/gps/b.data
-> results/data/position/gps/c.data
-> results/data/position/gps/info.txt
-> results/plots
-> ~~~
-> {: .bash}
->
-> What's the shortest `.gitignore` rule you could write to ignore all `.data`
-> files in `result/data/position/gps`? Do not ignore the `info.txt`.
->
-> > ## Solution
-> >
-> > Appending `results/data/position/gps/*.data` will match every file in `results/data/position/gps` that ends with `.data`.
-> > The file `results/data/position/gps/info.txt` will not be ignored.
-> {: .solution}
-{: .challenge}
-
 > ## The Order of Rules
 >
 > Given a `.gitignore` file with the following contents:
@@ -235,25 +212,5 @@ nothing to commit, working directory clean
 > > Because the `!*.data` entry negates all of the previous `.data` files in the `.gitignore`,
 > > none of them will be ignored, and all `.data` files will be tracked.
 > >
-> {: .solution}
-{: .challenge}
-
-> ## Log Files
->
-> You wrote a script that creates many intermediate log-files of the form `log_01`, `log_02`, `log_03`, etc.
-> You want to keep them but you do not want to track them through `git`.
->
-> 1. Write **one** `.gitignore` entry that excludes files of the form `log_01`, `log_02`, etc.
->
-> 2. Test your "ignore pattern" by creating some dummy files of the form `log_01`, etc.
->
-> 3. You find that the file `log_01` is very important after all, add it to the tracked files without changing the `.gitignore` again.
->
-> 4. Discuss with your neighbor what other types of files could reside in your directory that you do not want to track and thus would exclude via `.gitignore`.
->
-> > ## Solution
-> >
-> > 1. append either `log_*`  or  `log*`  as a new entry in your .gitignore
-> > 3. track `log_01` using   `git add -f log_01`
 > {: .solution}
 {: .challenge}
