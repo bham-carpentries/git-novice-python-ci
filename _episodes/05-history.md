@@ -20,41 +20,56 @@ As we saw in the previous lesson, we can refer to commits by their
 identifiers.  You can refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
 
-We've been adding one line at a time to `mars.txt`, so it's easy to track our
-progress by looking, so let's do that using our `HEAD`s.  Before we start,
-let's make a change to `mars.txt`.
+We've been adding one things to the functions.py file and then checking the changes using `git status` and `git diff`.  Before we start,
+let's make a change to `functions.py` by adding a return type to the method:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano functions.py
+$ cat functions.py
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-An ill-considered change
+def sum_function(list) -> float:
+    """
+    A function which takes a list as an argument and
+    returns the floating point sum.
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
+
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
 Now, let's see what we get.
 
 ~~~
-$ git diff HEAD mars.txt
+$ git diff HEAD functions.py
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index b36abfd..0848c8d 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1,3 +1,4 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
- But the Mummy will appreciate the lack of humidity
-+An ill-considered change.
+diff --git a/functions.py b/functions.py
+index c6835ed..536cfac 100644
+--- a/functions.py
++++ b/functions.py
+@@ -1,4 +1,4 @@
+-def sum_function(list):
++def sum_function(list) -> float:
+     """
+     A function which takes a list as an argument and
+     returns the floating point sum.
 ~~~
 {: .output}
 
@@ -65,53 +80,71 @@ that by adding `~1`
 to refer to the commit one before `HEAD`.
 
 ~~~
-$ git diff HEAD~1 mars.txt
+$ git diff HEAD~1 functions.py
 ~~~
 {: .bash}
 
 If we want to see the differences between older commits we can use `git diff`
 again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
-
 ~~~
-$ git diff HEAD~2 mars.txt
+$ git diff HEAD~2 functions.py
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,4 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+An ill-considered change
+diff --git a/functions.py b/functions.py
+index e4b4bb8..536cfac 100644
+--- a/functions.py
++++ b/functions.py
+@@ -1,4 +1,18 @@
+-def sum_function(list):
++def sum_function(list) -> float:
++    """
++    A function which takes a list as an argument and
++    returns the floating point sum.
++
++    Parameters
++    ----------
++    list: list
++        Must be floats or ints
++
++    Returns
++    -------
++    float:
++        The sum of the elements in list
++    """
+     sum = 0.0
+     for item in list:
+         sum += item
 ~~~
 {: .output}
 
 We could also use `git show` which shows us what changes we made at an older commit as well as the commit message, rather than the _differences_ between a commit and our working directory that we see by using `git diff`.
 
 ~~~
-$ git show HEAD~2 mars.txt
+$ git show HEAD~2 functions.py
 ~~~
 {: .bash}
 
 ~~~
-commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
+commit 095f874fbaf2a15a349230f66b0bbdd69c97a931
 Author: Ryan Pepper <r.pepper@bham.ac.uk>
-Date:   Thu Aug 22 10:07:21 2013 -0400
+Date:   Mon Dec 6 19:12:12 2021 +0000
 
-    Start notes on Mars as a base
+    Created a summing function in functions.py
 
-diff --git a/mars.txt b/mars.txt
+diff --git a/functions.py b/functions.py
 new file mode 100644
-index 0000000..df0654a
+index 0000000..e4b4bb8
 --- /dev/null
-+++ b/mars.txt
-@@ -0,0 +1 @@
-+Cold and dry, but everything is my favorite color
++++ b/functions.py
+@@ -0,0 +1,5 @@
++def sum_function(list):
++    sum = 0.0
++    for item in list:
++        sum += item
++    return sum
 ~~~
 {: .output}
 
@@ -130,68 +163,56 @@ These are unique IDs for the changes,
 and "unique" really does mean unique:
 every change to any set of files on any computer
 has a unique 40-character identifier.
-Our first commit was given the ID
-`f22b25e3233b4645dabd0d81e651fe074bd8e73b`,
-so let's try this:
+My first commit was given the ID
+`095f874fbaf2a15a349230f66b0bbdd69c97a931`,
+so let's try this (note that on your machine it will be different):
 
 ~~~
-$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
+$ git diff 095f874fbaf2a15a349230f66b0bbdd69c97a931 functions.py
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..93a3e13 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,4 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+An ill-considered change
+diff --git a/functions.py b/functions.py
+index e4b4bb8..cbd1b2f 100644
+--- a/functions.py
++++ b/functions.py
+@@ -1,5 +1,41 @@
+ def sum_function(list) -> float:
++    """
++    A function which takes a list as an argument and
++    returns the floating point sum.
++
++    Parameters
++    ----------
++    list: list
++        Must be floats or ints
++
++    Returns
++    -------
++    float:
++        The sum of the elements in list
++    """
+     sum = 0.0
+     for item in list:
+         sum += item
+     return sum
 ~~~
 {: .output}
 
 That's the right answer,
 but typing out random 40-character strings is annoying,
-so Git lets us use just the first few characters:
+so Git lets us use just the first few characters to get the same result:
 
 ~~~
-$ git diff f22b25e mars.txt
+$ git diff f22b25e functions.py
 ~~~
 {: .bash}
-
-~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..93a3e13 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,4 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+An ill-considered change
-~~~
-{: .output}
 
 All right! So
 we can save changes to files and see what we've changed—now how
 can we restore older versions of things?
-Let's suppose we accidentally overwrite our file:
-
-~~~
-$ nano mars.txt
-$ cat mars.txt
-~~~
-{: .bash}
-
-~~~
-We will need to manufacture our own oxygen
-~~~
-{: .output}
-
-`git status` now tells us that the file has been changed,
-but those changes haven't been staged:
+Let's suppose we want to get rid of that change that we added - we don't want to add the return type. `git status` tells us that the file has been changed, but those changes haven't been staged:
 
 ~~~
 $ git status
@@ -204,7 +225,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   functions.py
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -214,15 +235,31 @@ We can put things back the way they were
 by using `git restore`:
 
 ~~~
-$ git restore --source HEAD mars.txt
-$ cat mars.txt
+$ git restore --source HEAD functions.py
+$ cat functions.py
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+def sum_function(list):
+    """
+    A function which takes a list as an argument and
+    returns the floating point sum.
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
+
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
@@ -232,20 +269,38 @@ In this case,
 we're telling Git that we want to recover the version of the file recorded in `HEAD`,
 which is the last saved commit.
 If we want to go back even further,
-we can use a commit identifier instead:
+we could use a commit identifier instead:
 
 ~~~
-$ git restore --source f22b25e mars.txt
+$ git restore --source 424982e functions.py
 ~~~
 {: .bash}
 
 ~~~
-$ cat mars.txt
+$ cat functions.py
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
+def sum_function(list):
+    """
+    A function which takes a list as an argument and
+    returns the sum
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
+
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
@@ -262,7 +317,7 @@ Changes to be committed:
 #   (use "git add <file>..." to update what will be committed)
 #   (use "git restore <file>..." to discard changes in working directory)
 #
-#	modified:   mars.txt
+#	modified:   functions.py
 #
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -271,21 +326,18 @@ no changes added to commit (use "git add" and/or "git commit -a")
 If we had gone one step further and staged something to be committed,
 this can be restored by adding the `--staged` flag (by default, it will restore to HEAD):
 ~~~
-$ git restore --staged mars.txt
+$ git restore --staged functions.py
 ~~~
 {: .bash}
 
 > ## Checkout or Restore?
 >
 > In older versions of git, the command `checkout` was used instead of `restore`. Apart from being more
-> confusing, this could lead being in a 'detached HEAD' state if you mistyped the command.
+> confusing, this could lead to being in something called a 'detached HEAD' state if you mistyped the command.
 > Luckily, this should not happen any more unless you want it to!
 {: .callout}
 
-It's important to remember that
-we must use the commit number that identifies the state of the repository
-*before* the change we're trying to undo.
-A common mistake is to use the number of
+It's important to remember that we must use the commit number that identifies the state of the repository *before* the change we're trying to undo. A common mistake is to use the number of
 the commit in which we made the change we're trying to get rid of.
 In the example below, we want to retrieve the state from before the most
 recent commit (`HEAD~1`), which is commit `f22b25e`:
@@ -340,95 +392,4 @@ moving backward and forward in time becomes much easier.
 > 4. `$ git restore --source <unique ID of last commit> data_cruncher.py`
 >
 > 5. Both 2 and 4
-{: .challenge}
-
-> ## Understanding Workflow and History
->
-> What is the output of the last command in
->
-> ~~~
-> $ cd planets
-> $ echo "Venus is beautiful and full of love" > venus.txt
-> $ git add venus.txt
-> $ echo "Venus is too hot to be suitable as a base" >> venus.txt
-> $ git commit -m "Comment on Venus as an unsuitable base"
-> $ git restore venus.txt
-> $ cat venus.txt #this will print the contents of venus.txt to the screen
-> ~~~
-> {: .bash}
->
-> 1. ~~~
->    Venus is too hot to be suitable as a base
->    ~~~
->    {: .output}
-> 2. ~~~
->    Venus is beautiful and full of love
->    ~~~
->    {: .output}
-> 3. ~~~
->    Venus is beautiful and full of love
->    Venus is too hot to be suitable as a base
->    ~~~
->    {: .output}
-> 4. ~~~
->    Error because you have changed venus.txt without committing the changes
->    ~~~
->    {: .output}
->
-> > ## Solution
-> >
-> > The answer is 2 because `git add venus.txt` was used only before add the line
-> > `Venus is too hot to be suitable as a base`
-> > which was lost when `git restore` was executed.
-> > Using the flag `-a` with `git commit` would have prevented the lost.
-> {: .solution}
-{: .challenge}
-
-> ## Checking Understanding of `git diff`
->
-> Consider this command: `git diff HEAD~3 mars.txt`. What do you predict this command
-> will do if you execute it? What happens when you do execute it? Why?
->
-> Try another command, `git diff [ID] mars.txt`, where [ID] is replaced with
-> the unique identifier for your most recent commit. What do you think will happen,
-> and what does happen?
-{: .challenge}
-
-> ## Explore and Summarize Histories
->
-> Exploring history is an important part of git, often it is a challenge to find
-> the right commit ID, especially if the commit is from several months ago.
->
-> Imagine the `planets` project has more than 50 files.
-> You would like to find a commit with specific text in `mars.txt` is modified.
-> When you type `git log`, a very long list appeared,
-> How can you narrow down the search?
->
-> Recall that the `git diff` command allow us to explore one specific file,
-> e.g. `git diff mars.txt`. We can apply a similar idea here.
->
-> ~~~
-> $ git log mars.txt
-> ~~~
-> {: .bash}
->
-> Unfortunately some of these commit messages are very ambiguous e.g. `update files`.
-> How can you search through these files?
->
-> Both `git diff` and `git log` are very useful and they summarize a different part of the history for you.
-> Is it possible to combine both? Let's try the following:
->
-> ~~~
-> $ git log --patch mars.txt
-> ~~~
-> {: .bash}
->
-> You should get a long list of output, and you should be able to see both commit messages and the difference between each commit.
->
-> Question: What does the following command do?
->
-> ~~~
-> $ git log --patch HEAD~3 *.txt
-> ~~~
-> {: .bash}
 {: .challenge}

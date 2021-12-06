@@ -27,11 +27,11 @@ different changes to each copy.  Version control helps us manage these
 [resolve]({{ page.root }}/reference/#resolve) overlapping changes.
 
 To see how we can resolve conflicts, we must first create one.  The file
-`mars.txt` currently looks like this both locally and on GitLab:
+`functions.py` currently looks like this both locally and on GitLab:
 repository:
 
 ~~~
-$ cat mars.txt
+$ cat functions.py
 ~~~
 {: .bash}
 
@@ -42,7 +42,7 @@ But the Mummy will appreciate the lack of humidity
 ~~~
 {: .output}
 
-Click on the `mars.txt` file in the GitLab interface to view it and then click on the blue 'Edit' button. In the
+Click on the `functions.py` file in the GitLab interface to view it and then click on the blue 'Edit' button. In the
 editor that's brought up, add a line to the end so it looks like this:
 
 ~~~
@@ -57,8 +57,8 @@ Now let's make a different change to the **local** copy
 **without** updating from GitHub:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano functions.py
+$ cat functions.py
 ~~~
 {: .bash}
 
@@ -73,7 +73,7 @@ We added a different line in the local copy
 We can commit the change locally:
 
 ~~~
-$ git add mars.txt
+$ git add functions.py
 $ git commit -m "Add a line in my copy"
 ~~~
 {: .bash}
@@ -123,8 +123,8 @@ remote: Total 3 (delta 1), reused 3 (delta 1)
 Unpacking objects: 100% (3/3), done.
 From https://github.com/vlad/planets
  * branch            master     -> FETCH_HEAD
-Auto-merging mars.txt
-CONFLICT (content): Merge conflict in mars.txt
+Auto-merging functions.py
+CONFLICT (content): Merge conflict in functions.py
 Automatic merge failed; fix conflicts and then commit the result.
 ~~~
 {: .output}
@@ -137,7 +137,7 @@ stop us from trampling on our previous work. The conflict is marked in
 in the affected file:
 
 ~~~
-$ cat mars.txt
+$ cat functions.py
 ~~~
 {: .bash}
 
@@ -167,7 +167,7 @@ or get rid of the change entirely.
 Let's replace both so that the file looks like this:
 
 ~~~
-$ cat mars.txt
+$ cat functions.py
 ~~~
 {: .bash}
 
@@ -180,11 +180,11 @@ We removed the conflict on this line
 {: .output}
 
 To finish merging,
-we add `mars.txt` to the changes being made by the merge
+we add `functions.py` to the changes being made by the merge
 and then commit:
 
 ~~~
-$ git add mars.txt
+$ git add functions.py
 $ git status
 ~~~
 {: .bash}
@@ -196,7 +196,7 @@ All conflicts fixed but you are still merging.
 
 Changes to be committed:
 
-	modified:   mars.txt
+	modified:   functions.py
 
 ~~~
 {: .output}
@@ -247,7 +247,7 @@ From https://github.com/vlad/planets
  * branch            master     -> FETCH_HEAD
 Updating dabb4c8..2abf2b1
 Fast-forward
- mars.txt | 2 +-
+ functions.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 ~~~
 {: .output}
@@ -255,7 +255,7 @@ Fast-forward
 We get the merged file:
 
 ~~~
-$ cat mars.txt
+$ cat functions.py
 ~~~
 {: .bash}
 

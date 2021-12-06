@@ -54,7 +54,7 @@ $ git init
 {: .bash}
 
 If you remember back to the earlier [lesson](./04-changes.html) where we added and
-commited our earlier work on `mars.txt`, we had a diagram of the local repository
+commited our earlier work on `functions.py`, we had a diagram of the local repository
 which looked like this:
 
 ![The Local Repository with Git Staging Area](../fig/git-staging-area.svg)
@@ -63,7 +63,7 @@ Now that we have two repositories, we need a diagram like this:
 
 ![Freshly-Made GitLab Repository](../fig/git-freshly-made-github-repo.svg)
 
-Note that our local repository still contains our earlier work on `mars.txt`, but the
+Note that our local repository still contains our earlier work on `functions.py`, but the
 remote repository on GitLab appears empty as it doesn't contain any files yet.
 
 The next step is to connect the two repositories.  We do this by making the

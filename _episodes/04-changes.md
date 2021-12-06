@@ -152,7 +152,7 @@ $ git commit -m "Created a summing function in functions.py"
 {: .bash}
 
 ~~~
-[master (root-commit) f22b25e] Created a summing function in functions.py
+[master (root-commit) f22b25e] Created a summing function in functions.py (HEAD -> master)
  1 file changed, 5 insertions(+)
  create mode 100644 functions.py
 ~~~
@@ -200,7 +200,7 @@ $ git log
 ~~~
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Ryan Pepper <r.pepper@bham.ac.uk>
-Date:   Thu Aug 22 09:51:46 2013 -0400
+Date:   Mon Dec 6 09:51:46 2021 -0400
 
     Created a summing function in functions.py
 ~~~
@@ -298,7 +298,7 @@ diff --git a/functions.py b/functions.py
 index df0654a..315bf3a 100644
 --- a/functions.py
 +++ b/functions.py
-@@ -1,4 +1,17 @@
+@@ -1,4 +1,18 @@
  def sum_function(list):
 +    """
 +    A function which takes a list as an argument and
@@ -339,7 +339,7 @@ If we break it down into pieces:
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add documentation to the sum_functions method in functions.py"
+$ git commit -m "Add documentation to the sum_function in functions.py"
 $ git status
 ~~~
 {: .bash}
@@ -362,12 +362,12 @@ Let's fix that:
 
 ~~~
 $ git add functions.py
-$ git commit -m "Add documentation to the sum_functions method in functions.py"
+$ git commit -m "Add documentation to the sum_function in functions.py"
 ~~~
 {: .bash}
 
 ~~~
-[master 34961b1] Add documentation to the sum_functions method in functions.py
+[master 095f874] Add documentation to the sum_function in functions.py
  1 file changed, 14 insertions(+)
 ~~~
 {: .output}
@@ -456,7 +456,7 @@ diff --git a/functions.py b/functions.py
 index 315bf3a..b36abfd 100644
 --- a/functions.py
 +++ b/functions.py
-@@ -1,6 +1,7 @@
+@@ -1,7 +1,7 @@
  def sum_function(list):
      """
      A function which takes a list as an argument and 
@@ -496,7 +496,7 @@ diff --git a/functions.py b/functions.py
 index 315bf3a..b36abfd 100644
 --- a/functions.py
 +++ b/functions.py
-@@ -1,2 +1,3 @@
+@@ -1,7 +1,7 @@
  def sum_function(list):
      """
      A function which takes a list as an argument and 
@@ -510,7 +510,8 @@ index 315bf3a..b36abfd 100644
 
 it shows us the difference between
 the last committed change
-and what's in the staging area.
+and what's in the staging area - which is the same change we saw before we did 'git add'.
+
 Let's save our changes:
 
 ~~~
@@ -519,7 +520,7 @@ $ git commit -m "Add qualification about sum being floating point result in sum_
 {: .bash}
 
 ~~~
-[master 005937f] Add qualification about sum being floating point result in sum_function
+[master 98bf9da] Add qualification about sum being floating point result in sum_function
  1 file changed, 1 insertion(+), 1 deletion(-)
 ~~~
 {: .output}
@@ -545,21 +546,21 @@ $ git log
 {: .bash}
 
 ~~~
-commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
+commit 98bf9da56c0635bf16809659ceafb0b5cfbae11a (HEAD -> master)
 Author: Ryan Pepper <r.pepper@bham.ac.uk>
-Date:   Thu Aug 22 10:14:07 2013 -0400
+Date:   Mon Dec 6 19:16:15 2021 +0000
 
-    Add qualification about sum being floating point result in sum_function
+    Add qualification about sum being floating point result in sum_function.py
 
-commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
+commit 424982e5301871e3e7272577b37cc1ed5571971b
 Author: Ryan Pepper <r.pepper@bham.ac.uk>
-Date:   Thu Aug 22 10:07:21 2013 -0400
+Date:   Mon Dec 6 19:14:08 2021 +0000
 
-    Add concerns about effects of Mars' moons on Wolfman
+    Add documentation to the sum_function method in functions.py
 
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+commit 095f874fbaf2a15a349230f66b0bbdd69c97a931
 Author: Ryan Pepper <r.pepper@bham.ac.uk>
-Date:   Thu Aug 22 09:51:46 2013 -0400
+Date:   Mon Dec 6 19:12:12 2021 +0000
 
     Created a summing function in functions.py
 ~~~
@@ -601,11 +602,11 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > {: .bash}
 >
 > ~~~
-> commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
+> commit 98bf9da56c0635bf16809659ceafb0b5cfbae11a (HEAD -> master)
 > Author: Ryan Pepper <r.pepper@bham.ac.uk>
-> Date:   Thu Aug 22 10:14:07 2013 -0400
->
->    Add qualification about sum being floating point result in sum_function
+> Date:   Mon Dec 6 19:16:15 2021 +0000
+> 
+>    Add qualification about sum being floating point result in sum_function.py
 > ~~~
 > {: .output}
 >
@@ -617,23 +618,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .bash}
 > ~~~
-> * 005937f Add qualification about sum being floating point result in sum_function
-> * 34961b1 Add documentation to the sum_functions method in functions.py
-> * f22b25e Created a summing function in functions.py
-> ~~~
-> {: .output}
->
-> You can also combine the `--oneline` options with others. One useful
-> combination is:
->
-> ~~~
-> $ git log --oneline --graph --all --decorate
-> ~~~
-> {: .bash}
-> ~~~
-> * 005937f Add qualification about sum being floating point result in sum_function (HEAD, master)
-> * 34961b1 Add documentation to the sum_functions method in functions.py
-> * f22b25e Created a summing function in functions.py
+> 98bf9da (HEAD -> master) Add qualification about sum being floating point result in sum_function.py
+> 424982e Add documentation to the sum_function method in functions.py
+> 095f874 Created a summing function in functions.py
 > ~~~
 > {: .output}
 {: .callout}
@@ -751,10 +738,12 @@ repository (`git commit`):
 > > 
 > > Here we store the common mathematical operations that will get > > used throughout the project.
 > > """
+> >
+> > 
 > > def sum_function(list):
 > >     """
 > >     A function which takes a list as an argument and 
-> >     returns the sum
+> >     returns the sum.
 > > 
 > >     Parameters
 > >     ----------
