@@ -11,21 +11,18 @@ keypoints:
 - "Git stores all of its repository data in the `.git` directory."
 ---
 
-Once Git is configured,
-we can start using it.
+Once Git is configured, we can start using it.
 
-We will continue with the story of Wolfman and Dracula who are investigating if it
-is possible to send a planetary lander to Mars. 
+We will pretend that we are working on a Python project called 'planets'.
 
 ![motivatingexample](../fig/motivatingexample.png)
-
 
 First, let's create a directory in `Desktop` folder for our work and then move into that directory:
 
 ~~~
 $ cd ~/Desktop
-$ mkdir planets
-$ cd planets
+$ mkdir SERENE
+$ cd SERENE
 ~~~
 {: .bash}
 
@@ -105,10 +102,10 @@ wording of the output might be slightly different.
 > 
 > > ## Solution
 > >
-> > No. Dracula does not need to make the `moons` sub-directory a Git repository 
+> > No, you do not need to make the `moons` sub-directory a Git repository 
 > > because the `planets` repository will track all files, sub-directories, and 
 > > sub-directory files under the `planets` directory.  Thus, in order to track 
-> > all information about moons, Dracula only needed to add the `moons` sub-directory
+> > all information about moons, you only needed to add the `moons` sub-directory
 > > to the `planets` directory.
 > > 
 > > Additionally, Git repositories can interfere with each other if they are "nested":
@@ -130,13 +127,13 @@ wording of the output might be slightly different.
 > {: .solution}
 {: .challenge}
 > ## Correcting `git init` Mistakes
-> Wolfman explains to Dracula how a nested repository is redundant and may cause confusion
-> down the road. Dracula would like to remove the nested repository. How can Dracula undo 
+> If you have a redundant nested repository, it is redundant and may cause confusion
+> down the road. You would like to remove the nested repository. How can you undo 
 > his last `git init` in the `moons` sub-directory?
 >
 > > ## Solution -- USE WITH CAUTION!
 > >
-> > To recover from this little mistake, Dracula can just remove the `.git`
+> > To recover from this little mistake, you can just remove the `.git`
 > > folder in the moons subdirectory by running the following command from inside the `planets` directory:
 > >
 > > ~~~
