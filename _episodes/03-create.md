@@ -13,20 +13,25 @@ keypoints:
 
 Once Git is configured, we can start using it.
 
-We will pretend that we are working on a Python project called 'planets'.
-
-![motivatingexample](../fig/motivatingexample.png)
+We will create a Python project called 'planets'.
 
 First, let's create a directory in `Desktop` folder for our work and then move into that directory:
 
 ~~~
 $ cd ~/Desktop
-$ mkdir SERENE
-$ cd SERENE
+$ mkdir planets
+$ cd planets
 ~~~
 {: .bash}
 
-Then we tell Git to make `planets` a [repository]({{ page.root }}/reference/#repository)—a place where
+When we are here, we're using 'planets' as our current working directory. We can check our current working directory at any time with:
+
+~~~
+$ pwd
+/home/pepperr/Desktop/planets
+~~~
+
+We need to tell Git to make `planets` a [Git repository]({{ page.root }}/reference/#repository)—a place where
 Git can store versions of our files:
 
 ~~~
@@ -42,7 +47,7 @@ $ ls
 ~~~
 {: .bash}
 
-But if we add the `-a` flag to show everything,
+But if we add the `-a` flag which shows everything including hidden files,
 we can see that Git has created a hidden directory within `planets` called `.git`:
 
 ~~~

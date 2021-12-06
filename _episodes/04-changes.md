@@ -26,7 +26,7 @@ $ pwd
 ~~~
 {: .bash}
 ~~~
-/home/vlad/Desktop/planets
+/home/ryan/Desktop/planets
 ~~~
 {: .output}
 
@@ -45,24 +45,27 @@ $ cd ..
 ~~~
 {: .bash}
 
-Let's create a file called `mars.txt` that contains some notes
-about the Red Planet's suitability as a base.
+Let's create a file called `functions.py` that contains some Python code.
 We'll use `nano` to edit the file;
 you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
 
 ~~~
-$ nano mars.txt
+$ nano functions.py
 ~~~
 {: .bash}
 
-Type the text below into the `mars.txt` file:
+Type the text below into the `functions.py` file:
 
 ~~~
-Cold and dry, but everything is my favorite color
+def sum_function(list):
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 
-`mars.txt` now contains a single line, which we can see by running:
+`functions.py` now contains a single Python function, which we can see by running:
 
 ~~~
 $ ls
@@ -70,17 +73,21 @@ $ ls
 {: .bash}
 
 ~~~
-mars.txt
+functions.py
 ~~~
 {: .output}
 
 ~~~
-$ cat mars.txt
+$ cat functions.py
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
+def sum_function(list):
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
@@ -100,7 +107,7 @@ Initial commit
 Untracked files:
    (use "git add <file>..." to include in what will be committed)
 
-	mars.txt
+	functions.py
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 {: .output}
@@ -110,7 +117,7 @@ that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
 ~~~
-$ git add mars.txt
+$ git add functions.py
 ~~~
 {: .bash}
 
@@ -129,25 +136,25 @@ Initial commit
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   mars.txt
+	new file:   functions.py
 
 ~~~
 {: .output}
 
-Git now knows that it's supposed to keep track of `mars.txt`,
+Git now knows that it's supposed to keep track of `functions.py`,
 but it hasn't recorded these changes as a commit yet.
 To get it to do that,
 we need to run one more command:
 
 ~~~
-$ git commit -m "Start notes on Mars as a base"
+$ git commit -m "Created a summing function in functons.py"
 ~~~
 {: .bash}
 
 ~~~
-[master (root-commit) f22b25e] Start notes on Mars as a base
+[master (root-commit) f22b25e] Created a summing function in functons.py
  1 file changed, 1 insertion(+)
- create mode 100644 mars.txt
+ create mode 100644 functions.py
 ~~~
 {: .output}
 
@@ -192,10 +199,10 @@ $ git log
 
 ~~~
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: Ryan Pepper <r.pepper@bham.ac.uk>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    Start notes on Mars as a base
+    Created a summing function in functons.py
 ~~~
 {: .output}
 
@@ -210,26 +217,43 @@ and the log message Git was given when the commit was created.
 
 > ## Where Are My Changes?
 >
-> If we run `ls` at this point, we will still see just one file called `mars.txt`.
+> If we run `ls` at this point, we will still see just one file called `functions.py`.
 > That's because Git saves information about files' history
 > in the special `.git` directory mentioned earlier
 > so that our filesystem doesn't become cluttered
 > (and so that we can't accidentally edit or delete an old version).
 {: .callout}
 
-Now suppose Dracula adds more information to the file.
+Now suppose I add more information to the file.
 (Again, we'll edit with `nano` and then `cat` the file to show its contents;
 you may use a different editor, and don't need to `cat`.)
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano functions.py
+$ cat functions.py
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
+def sum_function(list):
+    """
+    A function which takes a list as an argument and 
+    returns the sum
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
+    
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
@@ -247,7 +271,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   functions.py
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -270,13 +294,29 @@ $ git diff
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
+diff --git a/functions.py b/functions.py
 index df0654a..315bf3a 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,2 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
+--- a/functions.py
++++ b/functions.py
+@@ -1,4 +1,17 @@
+ def sum_function(list):
++    """
++    A function which takes a list as an argument and
++    returns the sum.
++
++    Parameters
++    ----------
++    list: list
++        Must be floats or ints
++    
++    Returns
++    -------
++    float:
++        The sum of the elements in list
++    """
+     sum = 0.0
+     for item in list:
+         sum += item
 ~~~
 {: .output}
 
@@ -294,12 +334,12 @@ If we break it down into pieces:
 4.  The remaining lines are the most interesting, they show us the actual differences
     and the lines on which they occur.
     In particular,
-    the `+` marker in the first column shows where we added a line.
+    the `+` marker in the first column shows where we added a line. We also see a few lines either side of the changes, which are shown for context.
 
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git commit -m "Add documentation to the sum_functions method in functions.py"
 $ git status
 ~~~
 {: .bash}
@@ -310,7 +350,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   functions.py
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -321,13 +361,13 @@ Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ~~~
-$ git add mars.txt
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git add functions.py
+$ git commit -m "Add documentation to the sum_functions method in functions.py"
 ~~~
 {: .bash}
 
 ~~~
-[master 34961b1] Add concerns about effects of Mars' moons on Wolfman
+[master 34961b1] Add documentation to the sum_functions method in functions.py
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -375,18 +415,34 @@ Let's watch as our changes to a file move from our editor
 to the staging area
 and into long-term storage.
 First,
-we'll add another line to the file:
+we'll add another change to the file, noting that the return type of the functon is a floating point number:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano functions.py
+$ cat functions.py
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+def sum_function(list):
+    """
+    A function which takes a list as an argument and
+    returns the floating point sum.
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
+    
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
@@ -396,25 +452,26 @@ $ git diff
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
+diff --git a/functions.py b/functions.py
 index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+--- a/functions.py
++++ b/functions.py
+@@ -1,6 +1,7 @@
+ def sum_function(list):
+     """
+     A function which takes a list as an argument and 
+     returns the floating point sum.
 ~~~
 {: .output}
 
 So far, so good:
-we've added one line to the end of the file
+we've added new text to the line.
 (shown with a `+` in the first column).
 Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ~~~
-$ git add mars.txt
+$ git add functions.py
 $ git diff
 ~~~
 {: .bash}
@@ -432,10 +489,10 @@ $ git diff --staged
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
+diff --git a/functions.py b/functions.py
 index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/functions.py
++++ b/functions.py
 @@ -1,2 +1,3 @@
  Cold and dry, but everything is my favorite color
  The two moons may be a problem for Wolfman
@@ -615,10 +672,10 @@ repository (`git commit`):
 > ## Choosing a Commit Message
 >
 > Which of the following commit messages would be most appropriate for the
-> last commit made to `mars.txt`?
+> last commit made to `functions.py`?
 >
 > 1. "Changes"
-> 2. "Added line 'But the Mummy will appreciate the lack of humidity' to mars.txt"
+> 2. "Added line 'But the Mummy will appreciate the lack of humidity' to functions.py"
 > 3. "Discuss effects of Mars' climate on the Mummy"
 >
 > > ## Solution
@@ -666,7 +723,7 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `mars.txt` noting your decision
+> 1. Add some text to `functions.py` noting your decision
 > to consider Venus as a base
 > 2. Create a new file `venus.txt` with your initial thoughts
 > about Venus as a base for you and your friends
@@ -675,10 +732,10 @@ repository (`git commit`):
 >
 > > ## Solution
 > >
-> > First we make our changes to the `mars.txt` and `venus.txt` files:
+> > First we make our changes to the `functions.py` and `venus.txt` files:
 > > ~~~
-> > $ nano mars.txt
-> > $ cat mars.txt
+> > $ nano functions.py
+> > $ cat functions.py
 > > ~~~
 > > {: .bash}
 > > ~~~
@@ -697,12 +754,12 @@ repository (`git commit`):
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add mars.txt venus.txt
+> > $ git add functions.py venus.txt
 > > ~~~
 > > {: .bash}
 > > Or with multiple commands:
 > > ~~~
-> > $ git add mars.txt
+> > $ git add functions.py
 > > $ git add venus.txt
 > > ~~~
 > > {: .bash}
