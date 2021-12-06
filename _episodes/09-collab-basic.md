@@ -1,5 +1,5 @@
 ---
-title: Collaborating
+title: Collaborating - Basic
 teaching: 25
 exercises: 0
 questions:
@@ -20,37 +20,37 @@ The 'Collaborator' needs to download a copy of the Owner's repository to her
  the following into the second terminal window:
  
 ~~~
-$ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
+$ git clone https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git ~/Desktop/planets-pepperr.git
 ~~~
 {: .bash}
 
-Replace 'vlad' with the yout username.
-
-![After Creating Clone of Repository](../fig/github-collaboration.svg)
-
-You can now make changes to this completely separate version of the repository
-to model another collaborator working on it. So just as you've done before:
+Replace the URL with your own one. You can now make changes to this completely separate version of the repository
+to model another collaborator working on it. So just as you've done before, add a change to the file - write a new Python functon at the bottom that computes a product
 
 ~~~
-$ cd ~/Desktop/vlad-planets
-$ nano pluto.txt
-$ cat pluto.txt
+$ cd ~/Desktop/planets-pepperr.git
+$ nano functions.py
+$ tail -n 5
 ~~~
 {: .bash}
 
 ~~~
-It is so a planet!
+def sum_product(list):
+    product = 1.0
+    for item in list:
+        product *= item
+    return product
 ~~~
 {: .output}
 
 ~~~
-$ git add pluto.txt
-$ git commit -m "Add notes about Pluto"
+$ git add functions.py
+$ git commit -m "Add a product method to functions.py"
 ~~~
 {: .bash}
 
 ~~~
- 1 file changed, 1 insertion(+)
+ 1 file changed, 7 insertions(+)
  create mode 100644 pluto.txt
 ~~~
 {: .output}
@@ -68,7 +68,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/vlad/planets.git
+To https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git
    9272da5..29aba7c  master -> master
 ~~~
 {: .output}
@@ -92,7 +92,7 @@ remote: Counting objects: 4, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0)
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
+From https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git
  * branch            master     -> FETCH_HEAD
 Updating 9272da5..29aba7c
 Fast-forward

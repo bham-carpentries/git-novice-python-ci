@@ -16,42 +16,66 @@ keypoints:
 ---
 
 Often, we want to work on a set of changes that are more complicated than what was shown in the last lesson, and without affecting other people's work. Think for example, what would happen if I made a change to code that someone else was using, but left it in a broken state. They would probably not be very happy with me! To this effect, we can use a concept called 'branches' to separate works-in-progress from the known 'good' copy of the code. In general, it's considered good practice to create a branch for every piece of work that you do, and to merge these into the 'good' version regularly.
+
+To create a new branch, run the following command in your repository:
  
 ~~~
-$ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
+$ git checkout -b add-square-array-method
 ~~~
 {: .bash}
-
-Replace 'vlad' with the your username.
-
-![After Creating Clone of Repository](../fig/github-collaboration.svg)
-
-You can now make changes to this completely separate version of the repository
-to model another collaborator working on it. So just as you've done before:
-
 ~~~
-$ cd ~/Desktop/vlad-planets
-$ nano pluto.txt
-$ cat pluto.txt
-~~~
-{: .bash}
-
-~~~
-It is so a planet!
+Switched to a new branch 'add-square-array-method'
 ~~~
 {: .output}
 
+This creates a separate area for us to work in and add changes. It's a bit like how we cloned the repository in a separate place in the last lesson. However, we can also push our branch to the remote repository and keep it backed up.
+
+We'll add a function that takes in a list, and squares all of the elements in it, returning a new array:
 ~~~
-$ git add pluto.txt
-$ git commit -m "Add notes about Pluto"
+$ nano functions.py
+$ tail -n 2 functions.py
 ~~~
 {: .bash}
 
 ~~~
- 1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+def square_array(list):
+    return [item*item for item in list]
 ~~~
 {: .output}
+
+Then we'll commit it as normal:
+~~~
+$ git add functions.py
+$ git commit -m "Add a method that squares a list"
+~~~
+{: .bash}
+
+~~~
+[add-square-array-method ea4141e] Add a method that squares a list
+ 1 file changed, 4 insertions(+)
+~~~
+{: .output}
+
+Notice now that instead of saying 'master' here, it says 'add-square-array-method', showing us that our commit is on our branch. We've sort of glossed over it previously, but 'master' is the "default branch" in Git. In some newer git versions this has been renamed to "main", so you may see this instead.
+
+Our commit is now saved in our local repository. If you want to, you can switch back to the "master" branch by doing:
+
+~~~
+git checkout master
+~~~
+{: .bash}
+~~~
+Switched to branch 'master'
+~~~
+{: .output}
+
+If you now print the file, you'll see that our new method isn't there:
+
+~~~
+cat functions.py
+~~~
+{: .bash}
+~~~
 
 Then push the change to the *Owner's repository* on GitHub:
 
@@ -59,80 +83,33 @@ Then push the change to the *Owner's repository* on GitHub:
 $ git push origin master
 ~~~
 {: .bash}
-
 ~~~
-Counting objects: 4, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (3/3), 306 bytes, done.
-Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/vlad/planets.git
-   9272da5..29aba7c  master -> master
-~~~
-{: .output}
+def sum_function(list):
+    """
+    A function which takes a list as an argument and
+    returns the sum
 
-Note that we didn't have to create a remote called `origin`: Git has already
-setup this as default from the original `clone` that we did.
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
 
-Take a look at thes repository on the GitLab website now (maybe you need
-to refresh your browser.) You should be able to see the new commit made by the
-'Collaborator' (though in this case it's still you!).
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 
-To download the changes from GitLab, switch back to your original terminal and enter::
 
-~~~
-$ git pull origin master
-~~~
-{: .bash}
-
-~~~
-remote: Counting objects: 4, done.
-remote: Compressing objects: 100% (2/2), done.
-remote: Total 3 (delta 0), reused 3 (delta 0)
-Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
- * branch            master     -> FETCH_HEAD
-Updating 9272da5..29aba7c
-Fast-forward
- pluto.txt | 1 +
- 1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+def sum_product(list):
+    product = 1.0
+    for item in list:
+        product *= item
+    return product
 ~~~
 {: .output}
 
-Now the three repositories (Owner's local, Collaborator's local, and Owner's on
-GitLab) are back in sync.
-
-> ## A Basic Collaborative Workflow
->
-> In practice, it is good to be sure that you have an updated version of the
-> repository you are collaborating on, so you should `git pull` before making
-> our changes. The basic collaborative workflow would be:
->
-> * update your local repo with `git pull origin master`,
-> * make your changes and stage them with `git add`,
-> * commit your changes with `git commit -m`, and
-> * upload the changes to GitHub with `git push origin master`
->
-> It is better to make many commits with smaller changes rather than
-> of one commit with massive changes: small commits are easier to
-> read and review.
-{: .callout}
-
-> ## Comment Changes in GitLab
->
-> The Collaborator has some questions about one line change made by the Owner and
-> has some suggestions to propose.
->
-> With GitLab, it is possible to comment the diff of a commit. Over the line of
-> code to comment, a blue comment icon appears to open a comment window.
->
-> The Collaborator posts its comments and suggestions using GitLab interface.
-{: .challenge}
-
-> ## Version History, Backup, and Version Control
->
-> Some backup software can keep a history of the versions of your files. They also
-> allows you to recover specific versions. How is this functionality different from version control?
-> What are some of the benefits of using version control, Git and GitLab?
-{: .challenge}

@@ -92,9 +92,9 @@ $ git push origin master
 {: .bash}
 
 ~~~
-To https://github.com/vlad/planets.git
+To https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git
  ! [rejected]        master -> master (non-fast-forward)
-error: failed to push some refs to 'https://github.com/vlad/planets.git'
+error: failed to push some refs to 'https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git'
 hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
 hint: before pushing again.
@@ -224,7 +224,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (6/6), done.
 Writing objects: 100% (6/6), 697 bytes, done.
 Total 6 (delta 2), reused 0 (delta 0)
-To https://github.com/vlad/planets.git
+To https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git
    dabb4c8..2abf2b1  master -> master
 ~~~
 {: .output}
