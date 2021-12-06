@@ -21,29 +21,35 @@ Most Python projects are structured in a similar way. There are very good reason
 Generally, at a minimum, a Python project has the following structure:
 
 ~~~
-planets/
-  planets/
-    functions.py
-    __init__.py   # Often this is a 'blank' file.
-  setup.py
-  requirements.txt
-  README.md
+- planets/
+  - planets/
+    - functions.py
+    - test_functions.py
+    - __init__.py   # Often this is a 'blank' file.
+  - setup.py
+  - requirements.txt
+  - README.md
 ~~~
+{: .output}
 
-We'll take these elements one at a time:
+We'll take these folders/files one at a time:
 
 # planets/
-Inside the project, we normally have a folder which matches the name of the Python module, so that the module can be imported with:
+Inside the project, we normally have a folder which matches the name of the Python module. This is done so that from the top directory , the code within the module can be imported with:
 ~~~
 import planets
 ~~~
 {: .python}
 You can see this for e.g. in the source repository of the [NumPy library](https://github.com/numpy/numpy).
 
-Within this folder, we can store code files (e.g. functions.py) or further subdirectories. These will then be importable too.
+Within this folder, we can store code files (e.g. functions.py) and further subdirectories. These will then be importable too.
 
-## __init__.py
-The __init__.py file is effectively as set of instructions that get run when you import a Python module. So with a blank __init__.py, nothing happens if you run `import planets` in a Python session. What is common is to import certain methods into the top level of the module, for e.g.:
+## functions.py
+
+This is just a standard Python file with methods in it. You can have as many of these as you like, but generally people organise them around what the code is doing. So for e.g if you have a few methods that deal with I/O, you might create a file called `io.py` and put all of those methods there. Organising your code across multiple files like this is a very good idea - it makes it easier to find things.
+
+## `__init__.py`
+The `__init__.py` file is effectively as set of instructions that get run when you import a Python module. So with a blank `__init__.py`, nothing happens if you run `import planets` in a Python session. If you want to use methods from the functions.py file. What is common is to import certain methods into the top level of the module, for e.g.:
 
 ~~~
 from .functions import sum_function
@@ -58,3 +64,4 @@ Then, in a Python session, you would be able to do the following:
 10
 ~~~
 {: .python}
+
