@@ -69,10 +69,9 @@ in a later lesson will include this information.
 > [on this GitHub page](https://help.github.com/articles/dealing-with-line-endings/).
 {: .callout}
 
-For these lessons, we will be interacting with [GitLab](https://gitlab.com/) and so the email address used should be the same as the one used when setting up your GitLab account. If you are concerned about privacy, please review your [profile settings for how your email is used](https://gitlab.com/-/profile).
-If you elect to use a private email address with GitLab, then use that same email address for the `user.email` value, e.g. `username@users.noreply.gitlab.com` replacing `username` with your GitLab one. You can change the email address later on by using the `git config` command again.
+For these lessons, we will be interacting with the University of Birmingham's [GitLab](https://gitlab.com/) service, and so you should use your University account to log in. The ability to add external collaborators is not a problem, as you can invite people to use this with their personal e-mail address.If you/they elect to use a private email address with GitLab, then use that same email address for the `user.email` value, e.g. `username@users.noreply.gitlab.com` replacing `username` with your GitLab one. You can change the email address later on by using the `git config` command again.
 
-Dracula also has to set his favorite text editor, following this table:
+Sometimes, operations in Git will require the opening of a text editor. You can choose your favourite editor, by copying and pasting the relevant command below, though I will demonstrate this course using "nano". 
 
 | Editor             | Configuration command                            |
 |:-------------------|:-------------------------------------------------|
@@ -112,30 +111,9 @@ $ git config --list
 You can change your configuration as many times as you want: just use the
 same commands to choose another editor or update your email address.
 
-> ## Proxy
->
-> In some networks you need to use a
-> [proxy](https://en.wikipedia.org/wiki/Proxy_server). If this is the case, you
-> may also need to tell Git about the proxy:
->
-> ~~~
-> $ git config --global http.proxy proxy-url
-> $ git config --global https.proxy proxy-url
-> ~~~
-> {: .bash}
->
-> To disable the proxy, use
->
-> ~~~
-> $ git config --global --unset http.proxy
-> $ git config --global --unset https.proxy
-> ~~~
-> {: .bash}
-{: .callout}
-
 > ## Git Help and Manual
 >
-> Always remember that if you forget a `git` command, you can access the list of commands by using `-h` and access the Git manual by using `--help` :
+> Always remember that if you forget a `git` command, you can access the list of commands by using `-h` and access the Git manual by using `--help` (though practically, this is sometimes not very helpful...):
 >
 > ~~~
 > $ git config -h
