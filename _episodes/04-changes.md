@@ -37,7 +37,7 @@ $ pwd
 ~~~
 {: .bash}
 ~~~
-/home/vlad/Desktop/planets/moons
+/home/Ryan/Desktop/planets/moons
 ~~~
 {: .output}
 ~~~
@@ -514,12 +514,12 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Add qualification about sum being floating point result"
+$ git commit -m "Add qualification about sum being floating point result in sum_function"
 ~~~
 {: .bash}
 
 ~~~
-[master 005937f] Add qualification about sum being floating point result
+[master 005937f] Add qualification about sum being floating point result in sum_function
  1 file changed, 1 insertion(+), 1 deletion(-)
 ~~~
 {: .output}
@@ -549,7 +549,7 @@ commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
 Author: Ryan Pepper <r.pepper@bham.ac.uk>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
-    Add qualification about sum being floating point resul
+    Add qualification about sum being floating point result in sum_function
 
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
 Author: Ryan Pepper <r.pepper@bham.ac.uk>
@@ -605,7 +605,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > Author: Ryan Pepper <r.pepper@bham.ac.uk>
 > Date:   Thu Aug 22 10:14:07 2013 -0400
 >
->    Add qualification about sum being floating point result
+>    Add qualification about sum being floating point result in sum_function
 > ~~~
 > {: .output}
 >
@@ -617,7 +617,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .bash}
 > ~~~
-> * 005937f Add qualification about sum being floating point result
+> * 005937f Add qualification about sum being floating point result in sum_function
 > * 34961b1 Add documentation to the sum_functions method in functions.py
 > * f22b25e Created a summing function in functions.py
 > ~~~
@@ -631,7 +631,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .bash}
 > ~~~
-> * 005937f Discuss concerns about Mars' climate for Mummy (HEAD, master)
+> * 005937f Add qualification about sum being floating point result in sum_function (HEAD, master)
 > * 34961b1 Add documentation to the sum_functions method in functions.py
 > * f22b25e Created a summing function in functions.py
 > ~~~
@@ -683,12 +683,12 @@ repository (`git commit`):
 > last commit made to `functions.py`?
 >
 > 1. "Changes"
-> 2. "Added line 'But the Mummy will appreciate the lack of humidity' to functions.py"
-> 3. "Discuss effects of Mars' climate on the Mummy"
+> 2. "Changed docstring"
+> 3. "Add qualification about sum being floating point result in sum_function"
 >
 > > ## Solution
 > > Answer 1 is not descriptive enough, and the purpose of the commit is unclear; 
-> > and answer 2 is redundant to using "git diff" to see what changed in this commit;
+> > and answer 2 is redundawnt to using "git diff" to see what changed in this commit;
 > > but answer 3 is good: short, descriptive, and imperative.
 > {: .solution}
 {: .challenge}
@@ -731,10 +731,9 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `functions.py` noting your decision
-> to consider Venus as a base
-> 2. Create a new file `venus.txt` with your initial thoughts
-> about Venus as a base for you and your friends
+> 1. Modify functions.py by adding a docstring to the module.
+> 2. Create a new file `README.md` with your initial thoughts
+> about Venus as a base for you and your friends. Do this using Markdown.
 > 3. Add changes from both files to the staging area,
 > and commit those changes.
 >
@@ -747,40 +746,65 @@ repository (`git commit`):
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > Maybe I should start with a base on Venus.
+> > """
+> > A module containing common functions in the planets module.
+> > 
+> > Here we store the common mathematical operations that will get > > used throughout the project.
+> > """
+> > def sum_function(list):
+> >     """
+> >     A function which takes a list as an argument and 
+> >     returns the sum
+> > 
+> >     Parameters
+> >     ----------
+> >     list: list
+> >         Must be floats or ints
+> >     
+> >     Returns
+> >     -------
+> >     float:
+> >         The sum of the elements in list
+> >     """
+> >     sum = 0.0
+> >     for item in list:
+> >         sum += item
+> >     return sum
 > > ~~~
 > > {: .output}
 > > ~~~
-> > $ nano venus.txt
+> > $ nano README.md
 > > $ cat venus.txt
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > Venus is a nice planet and I definitely should consider it as a base.
+> > # Planets
+> > 
+> > This project stores the Python code for the planets project.
 > > ~~~
 > > {: .output}
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add functions.py venus.txt
+> > $ git add functions.py README.md
 > > ~~~
 > > {: .bash}
 > > Or with multiple commands:
 > > ~~~
 > > $ git add functions.py
-> > $ git add venus.txt
+> > $ git add README.md
 > > ~~~
 > > {: .bash}
 > > Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
 > > ~~~
-> > $ git commit -m "Write plans to start a base on Venus"
+> > $ git commit -m "Add docstring to functions.py and add a basic README.md"
 > > ~~~
 > > {: .bash}
 > > ~~~
 > > [master cc127c2]
-> >  Write plans to start a base on Venus
-> >  2 files changed, 2 insertions(+)
-> >  create mode 100644 venus.txt
+> >  Add docstring to functions.py and add a basic README.md
+> >  2 files changed, 8 insertions(+)
+> >  create mode 100644 README.md
 > > ~~~
 > > {: .output}
 > {: .solution}
@@ -814,26 +838,26 @@ repository (`git commit`):
 > >
 > > ~~~
 > > $ git add me.txt
-> > $ git commit -m "Update Vlad's bio." --author="Frank N. Stein <franky@monster.com>"
+> > $ git commit -m "Update Ryan's bio." --author="Mohammed Ahmed Afraz <M.A.Ahmed@bham.ac.uk>"
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > [master 4162a51] Update Vlad's bio.
-> > Author: Frank N. Stein <franky@monster.com>
+> > [master 4162a51] Update Ryan's bio.
+> > Author: Mohammed Ahmed Afraz <M.A.Ahmed@bham.ac.uk>
 > > 1 file changed, 2 insertions(+), 2 deletions(-)
 > >
 > > $ git log --format=full
 > > commit 4162a51b273ba799a9d395dd70c45d96dba4e2ff
-> > Author: Frank N. Stein <franky@monster.com>
+> > Author: Mohammed Ahmed Afraz <M.A.Ahmed@bham.ac.uk>
 > > Commit: Ryan Pepper <r.pepper@bham.ac.uk>
 > >
-> > Update Vlad's bio.
+> > Update Ryan's bio.
 > >
 > > commit aaa3271e5e26f75f11892718e83a3e2743fab8ea
 > > Author: Ryan Pepper <r.pepper@bham.ac.uk>
 > > Commit: Ryan Pepper <r.pepper@bham.ac.uk>
 > >
-> > Vlad's initial bio.
+> > Ryan's initial bio.
 > > ~~~
 > > {: .output}
 > {: .solution}
