@@ -76,14 +76,6 @@ cat functions.py
 ~~~
 {: .bash}
 ~~~
-
-Then push the change to the *Owner's repository* on GitHub:
-
-~~~
-$ git push origin master
-~~~
-{: .bash}
-~~~
 def sum_function(list):
     """
     A function which takes a list as an argument and
@@ -112,4 +104,65 @@ def sum_product(list):
     return product
 ~~~
 {: .output}
+
+# Pushing a new branch
+
+We'll switch back to our branch again:
+~~~
+$ git checkout add-square-array-method
+~~~
+{: .bash}
+~~~
+Switched to branch 'add-square-array-method'
+~~~
+{: .output}
+
+We can put our changes onto GitLab by pushing it. However, if you run `git push`, it won't immediately work:
+
+~~~
+$ git push
+~~~
+{: .bash}
+~~~
+fatal: The current branch add-square-array-method has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin add-square-array-method
+~~~
+{: .output}
+
+This message just means that the remote doesn't have a branch *called* add-square-array-method to push our work to. We can create one in our push just by running the command it gives us:
+
+~~~
+$ git push --set-upstream origin add-square-array-method
+~~~
+{: .bash}
+~~~
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 346 bytes | 173.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote:
+remote: To create a merge request for add-square-array-method, visit:
+remote:   https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr/-/merge_requests/new?merge_request%5Bsource_branch%5D=add-square-array-method
+remote:
+To https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git
+ * [new branch]      add-square-array-method -> add-square-array-method
+Branch 'add-square-array-method' set up to track remote branch 'add-square-array-method' from 'origin'.
+~~~
+{: .output}
+
+This slightly convoluted message tells us that:
+ 
+* A new branch was created on the remote GitLab version of the repository
+* Our local copy is associated with the remote branch
+* We pushed that commit
+
+New changes can be added and then pushed to the branch just by running the standard commit and push commands now. It's worth noting that `git push` only applies to the branch that you are currently working on - if you make changes on "master", then switch to the "add-square-array-method" and run `git push`, the master changes will not be uploaded to GitLab.
+
+# Pull Requests
+
+Pull requests can be used at this point to 
 

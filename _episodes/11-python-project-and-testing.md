@@ -18,7 +18,43 @@ keypoints:
 
 Most Python projects are structured in a similar way. There are very good reasons for this - if you follow the 'standard', other people who approach your code will recognise parts of it and will know by default how to install your code, run any tests that might exist, and where to look for source code or to change things like the dependencies that are required.
  
+Generally, at a minimum, a Python project has the following structure:
+
 ~~~
-$ git clone
+planets/
+  planets/
+    functions.py
+    __init__.py   # Often this is a 'blank' file.
+  setup.py
+  requirements.txt
+  README.md
 ~~~
-{: .bash}
+
+We'll take these elements one at a time:
+
+# planets/
+Inside the project, we normally have a folder which matches the name of the Python module, so that the module can be imported with:
+~~~
+import planets
+~~~
+{: .python}
+You can see this for e.g. in the source repository of the [NumPy library](https://github.com/numpy/numpy).
+
+Within this folder, we can store code files (e.g. functions.py) or further subdirectories. These will then be importable too.
+
+## __init__.py
+The __init__.py file is effectively as set of instructions that get run when you import a Python module. So with a blank __init__.py, nothing happens if you run `import planets` in a Python session. What is common is to import certain methods into the top level of the module, for e.g.:
+
+~~~
+from .functions import sum_function
+~~~
+{: .python}
+
+Then, in a Python session, you would be able to do the following:
+
+~~~
+>>> import planets
+>>> planets.sum_function([1, 2, 3, 4])
+10
+~~~
+{: .python}
