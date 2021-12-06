@@ -164,5 +164,7 @@ New changes can be added and then pushed to the branch just by running the stand
 
 # Pull Requests
 
-Pull requests can be used at this point to 
+Pull requests can be used at this point to make the changes 
+
+TODO: ADD PR SCREENSHOTS
 
