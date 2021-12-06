@@ -21,16 +21,17 @@ of configurations we will set as we get started with Git:
 
 On a command line, Git commands are written as `git verb`,
 where `verb` is what we actually want to do. So here is how
-Dracula sets up his new laptop:
+you set up Git on a new computer:
 
 ~~~
-$ git config --global user.name "Vlad Dracula"
-$ git config --global user.email "vlad@tran.sylvan.ia"
+$ git config --global user.name "Ryan Pepper"
+$ git config --global user.email "r.pepper@bham.ac.uk"
 ~~~
 {: .bash}
 
-Please use your own name and email address instead of Dracula's. This user name and email will be associated with your subsequent Git activity,
+Please use your own name and email address. This user name and email will be associated with your subsequent Git activity,
 which means that any changes pushed to
+[Birmingham's GitLab](https://gitlab.bham.ac.uk)
 [GitHub](https://github.com/),
 [BitBucket](https://bitbucket.org/),
 [GitLab](https://gitlab.com/) or

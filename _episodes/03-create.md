@@ -82,8 +82,8 @@ wording of the output might be slightly different.
 > ## Places to Create Git Repositories
 >
 > Along with tracking information about planets (the project we have already created), 
-> Dracula would also like to track information about moons.
-> Despite Wolfman's concerns, Dracula creates a `moons` project inside his `planets` 
+> you might also like to track information about moons.
+> You *could* create a `moons` project inside your `planets` 
 > project with the following sequence of commands:
 >
 > ~~~

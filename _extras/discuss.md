@@ -25,8 +25,8 @@ $ cat ~/.gitconfig
 
 ~~~
 [user]
-	name = Vlad Dracula
-	email = vlad@tran.sylvan.ia
+	name = Ryan Pepper
+	email = r.pepper@bham.ac.uk
 [color]
 	ui = true
 [core]
@@ -137,7 +137,7 @@ This has various impacts on Git's performance and will make it difficult to
 compare different versions of your project.
 
 For a basic example to show the difference it makes,
-we're going to go see what would have happened if Dracula had tried
+we're going to go see what would have happened if you had tried
 using outputs from a word processor instead of plain text.
 
 Create a new directory and go into it:
