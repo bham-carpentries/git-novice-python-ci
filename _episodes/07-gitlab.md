@@ -34,7 +34,7 @@ On the next screen, click 'Create Blank Project':
 ![Creating a Repository on GitLab (Step 1)](../fig/gitlab-create-project-02.png)
 
 You'll now be presented with a screen where you can put in the details for your project.
-Name your project "planets" and then click "Create Project":
+Name your project "planets-YOURUSERNAME" and then click "Create Project":
 
 ![Creating a Repository on GitLab (Step 1)](../fig/gitlab-create-project-03.png)
 
@@ -52,8 +52,7 @@ $ git init
 ~~~
 {: .bash}
 
-If you remember back to the earlier [lesson](./04-changes.html) where we added and
-commited our earlier work on `functions.py`, we had a diagram of the local repository
+If you remember back to the earlier [lesson](./04-changes.html) where we added and commited our earlier work on `functions.py`, we had a diagram of the local repository
 which looked like this:
 
 ![The Local Repository with Git Staging Area](../fig/git-staging-area.svg)
@@ -65,10 +64,17 @@ Now that we have two repositories, we need a diagram like this:
 Note that our local repository still contains our earlier work on `functions.py`, but the
 remote repository on GitLab appears empty as it doesn't contain any files yet.
 
+> ## Be careful!
+>
+> In the next section, be careful to use
+> the URL from *your* project, and not the
+> one from the commands!
+{: .callout}
+
 The next step is to connect the two repositories.  We do this by making the
 GitLab repository a [remote]({{ page.root }}/reference/#remote) for the local repository.
 The home page of the project on GitLab will tell you the string you need to identify it: It is the
-'https' string similar to `https://gitlab.com/vlad/planets.git` shown in the grey boxes.
+'https' string similar to `https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git` shown in the grey boxes.
 Alternatively, click on the blue 'Clone' button to bring up the link.
 
 > ## HTTPS vs. SSH
@@ -86,12 +92,11 @@ Copy that URL from the browser, go into the local `planets` repository, and run
 this command:
 
 ~~~
-$ git remote add origin https://gitlab.com/vlad/planets.git
+$ git remote add origin https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git
 ~~~
 {: .bash}
 
-Make sure to use the URL for your repository rather than Vlad's: the only
-difference should be your username instead of `vlad`.
+Make sure to use the URL for your repository rather than mine!
 
 We can check that the command has worked by running `git remote -v`:
 
@@ -101,8 +106,8 @@ $ git remote -v
 {: .bash}
 
 ~~~
-origin   https://gitlab.com/vlad/planets.git (push)
-origin   https://gitlab.com/vlad/planets.git (fetch)
+origin   https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git (push)
+origin   https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr.git (fetch)
 ~~~
 {: .output}
 
@@ -123,33 +128,11 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (6/6), done.
 Writing objects: 100% (9/9), 821 bytes, done.
 Total 9 (delta 2), reused 0 (delta 0)
-To https://gitlab.com/vlad/planets
+To https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr
  * [new branch]      master -> master
 Branch master set up to track remote branch master from origin.
 ~~~
 {: .output}
-
-> ## Proxy
->
-> If the network you are connected to uses a proxy, there is a chance that your
-> last command failed with "Could not resolve hostname" as the error message. To
-> solve this issue, you need to tell Git about the proxy:
->
-> ~~~
-> $ git config --global http.proxy http://user:password@proxy.url
-> $ git config --global https.proxy http://user:password@proxy.url
-> ~~~
-> {: .bash}
->
-> When you connect to another network that doesn't use a proxy, you will need to
-> tell Git to disable the proxy using:
->
-> ~~~
-> $ git config --global --unset http.proxy
-> $ git config --global --unset https.proxy
-> ~~~
-> {: .bash}
-{: .callout}
 
 > ## Password Managers
 >
@@ -195,7 +178,7 @@ $ git pull origin master
 {: .bash}
 
 ~~~
-From https://gitlab.com/vlad/planets
+From https://gitlab.bham.ac.uk/elvidgsm-dasp/planets-pepperr
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ~~~
@@ -207,7 +190,7 @@ GitLab, though, this command would download them to our local repository.
 
 > ## GitLab GUI
 >
-> Browse to your `planets` repository on GitLab.
+> Browse to your `planets-YOURUSERNAME` repository on GitLab.
 > Under the Code tab, find and click on the text that says "XX commits" (where "XX" is some number).
 > Hover over, and click on, the three buttons to the right of each commit.
 > What information can you gather/explore from these buttons?
