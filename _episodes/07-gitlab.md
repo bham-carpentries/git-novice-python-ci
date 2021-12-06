@@ -22,11 +22,10 @@ Systems like Git allow us to move work between any two repositories.  In
 practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop.  Most programmers use hosting
 services like [GitHub](https://github.com), [BitBucket](https://bitbucket.org) or
-[GitLab](https://gitlab.com/) to hold those master copies; we'll explore the pros
-and cons of this in the final section of this lesson.
+[GitLab](https://gitlab.com/) to hold those master copies.
 
 Let's start by sharing the changes we've made to our current project with the
-world.  Log in to GitLab, and from the main page, click on 'Create a Project':
+world.  Log in to [UoB's GitLab instance](https://gitlab.bham.ac.uk). You should already be added to a BEAR project and be aware of this. In Birmingham, BEAR Projects can only be created by Principal Investigators who must be permanent members of staff. If you can't see anything, please let us know.
 
 ![Creating a Repository on GitLab (Step 1)](../fig/gitlab-create-project-01.png)
 

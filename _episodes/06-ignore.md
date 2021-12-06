@@ -43,8 +43,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 {: .output}
 
 Putting these files under version control would be a waste of disk space.
-What's worse,
-having them all listed could distract us from changes that actually matter,
+What's worse, having them all listed could distract us from changes that actually matter,
 so let's tell Git to ignore them.
 
 We do this by creating a file in the root directory of our project called `.gitignore`:
