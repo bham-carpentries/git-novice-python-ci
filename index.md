@@ -3,17 +3,10 @@ layout: lesson
 root: .
 ---
 
-Wolfman and Dracula have been hired by Universal Missions (a space
-services spinoff from Euphoric State University) to investigate if it
-is possible to send their next planetary lander to Mars.  They want to
-be able to work on the plans at the same time, but they have run into
-problems doing this in the past.  If they take turns, each one will
-spend a lot of time waiting for the other to finish, but if they work
-on their own copies and email changes back and forth things will be
-lost, overwritten, or duplicated.
+You might be a researcher, PhD student or something else that has to work with software. You'll often have to work on a set of software or documents in collaboration with other people, often at the same time. If you do this naively, like working on Dropbox, or Google Drive, you can often run into problems. If you take it in turns, you end up taking a lot of time waiting to finish. Working on your own copies and then e-mailing changes back and forth is inelegant and can lead to things being lost, overwritten or duplicated. 
 
-A colleague suggests using [version control]({{ page.root }}/reference/#version-control) to
-manage their work. Version control is better than mailing files back and forth:
+A way of working around this is to use [version control]({{ page.root }}/reference/#version-control) to
+manage your work. Version control is better than mailing files back and forth:
 
 *   Nothing that is committed to version control is ever lost, unless
     you work really, really hard at it. Since all old versions of
@@ -34,7 +27,10 @@ Teams are not the only ones to benefit from version control: lone
 researchers can benefit immensely.  Keeping a record of what was
 changed, when, and why is extremely useful for all researchers if they
 ever need to come back to the project later on (e.g., a year later,
-when memory has faded).
+when memory has faded). This is especially useful if, for e.g. you write
+a paper in the first year of your PhD, and need to reuse the data and
+regenerate a figure slightly differently for your thesis, such as to 
+incorporate new data, change the style, etc.
 
 Version control is the lab notebook of the digital world: it's what
 professionals use to keep track of what they've done and to
@@ -46,8 +42,7 @@ to be shared can and should be stored in a version control system.
 
 > ## Prerequisites
 >
-> In this lesson we use Git from the Unix Shell.
-> Some previous experience with the shell is expected,
-> *but isn't mandatory*.
+> In this lesson we use Git from the Unix Shell, and we expect trainees to be famliar with Python.
+> Some previous experience with the shell is expected.
 {: .prereq}
 
