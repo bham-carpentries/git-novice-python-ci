@@ -147,13 +147,13 @@ To get it to do that,
 we need to run one more command:
 
 ~~~
-$ git commit -m "Created a summing function in functons.py"
+$ git commit -m "Created a summing function in functions.py"
 ~~~
 {: .bash}
 
 ~~~
-[master (root-commit) f22b25e] Created a summing function in functons.py
- 1 file changed, 1 insertion(+)
+[master (root-commit) f22b25e] Created a summing function in functions.py
+ 1 file changed, 5 insertions(+)
  create mode 100644 functions.py
 ~~~
 {: .output}
@@ -202,7 +202,7 @@ commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Ryan Pepper <r.pepper@bham.ac.uk>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    Created a summing function in functons.py
+    Created a summing function in functions.py
 ~~~
 {: .output}
 
@@ -368,7 +368,7 @@ $ git commit -m "Add documentation to the sum_functions method in functions.py"
 
 ~~~
 [master 34961b1] Add documentation to the sum_functions method in functions.py
- 1 file changed, 1 insertion(+)
+ 1 file changed, 14 insertions(+)
 ~~~
 {: .output}
 
@@ -460,13 +460,16 @@ index 315bf3a..b36abfd 100644
  def sum_function(list):
      """
      A function which takes a list as an argument and 
-     returns the floating point sum.
+-     returns the sum.
++     returns the floating point sum.
+
+     Parameters
+     ----------
 ~~~
 {: .output}
 
 So far, so good:
-we've added new text to the line.
-(shown with a `+` in the first column).
+we've added new text to the line. This is shown with a `-` for the old version of the line (a 'deletion') and a `+` in the first column (an 'insertion').
 Now let's put that change in the staging area
 and see what `git diff` reports:
 
@@ -494,9 +497,14 @@ index 315bf3a..b36abfd 100644
 --- a/functions.py
 +++ b/functions.py
 @@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+ def sum_function(list):
+     """
+     A function which takes a list as an argument and 
+-     returns the sum.
++     returns the floating point sum.
+
+     Parameters
+     ----------
 ~~~
 {: .output}
 
@@ -506,13 +514,13 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Discuss concerns about Mars' climate for Mummy"
+$ git commit -m "Add qualification about sum being floating point result"
 ~~~
 {: .bash}
 
 ~~~
-[master 005937f] Discuss concerns about Mars' climate for Mummy
- 1 file changed, 1 insertion(+)
+[master 005937f] Add qualification about sum being floating point result
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 ~~~
 {: .output}
 
@@ -538,22 +546,22 @@ $ git log
 
 ~~~
 commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: Ryan Pepper <r.pepper@bham.ac.uk>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
-    Discuss concerns about Mars' climate for Mummy
+    Add qualification about sum being floating point resul
 
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: Ryan Pepper <r.pepper@bham.ac.uk>
 Date:   Thu Aug 22 10:07:21 2013 -0400
 
     Add concerns about effects of Mars' moons on Wolfman
 
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: Ryan Pepper <r.pepper@bham.ac.uk>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    Start notes on Mars as a base
+    Created a summing function in functions.py
 ~~~
 {: .output}
 
@@ -594,10 +602,10 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >
 > ~~~
 > commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
-> Author: Vlad Dracula <vlad@tran.sylvan.ia>
+> Author: Ryan Pepper <r.pepper@bham.ac.uk>
 > Date:   Thu Aug 22 10:14:07 2013 -0400
 >
->    Discuss concerns about Mars' climate for Mummy
+>    Add qualification about sum being floating point result
 > ~~~
 > {: .output}
 >
@@ -609,9 +617,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .bash}
 > ~~~
-> * 005937f Discuss concerns about Mars' climate for Mummy
-> * 34961b1 Add concerns about effects of Mars' moons on Wolfman
-> * f22b25e Start notes on Mars as a base
+> * 005937f Add qualification about sum being floating point result
+> * 34961b1 Add documentation to the sum_functions method in functions.py
+> * f22b25e Created a summing function in functions.py
 > ~~~
 > {: .output}
 >
@@ -624,8 +632,8 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > {: .bash}
 > ~~~
 > * 005937f Discuss concerns about Mars' climate for Mummy (HEAD, master)
-> * 34961b1 Add concerns about effects of Mars' moons on Wolfman
-> * f22b25e Start notes on Mars as a base
+> * 34961b1 Add documentation to the sum_functions method in functions.py
+> * f22b25e Created a summing function in functions.py
 > ~~~
 > {: .output}
 {: .callout}
@@ -793,7 +801,7 @@ repository (`git commit`):
 > When committing you can name someone else as the author:
 >
 > ~~~
-> $ git commit --author="Vlad Dracula <vlad@tran.sylvan.ia>"
+> $ git commit --author="Ryan Pepper <r.pepper@bham.ac.uk>"
 > ~~~
 > {: .bash}
 >
@@ -817,13 +825,13 @@ repository (`git commit`):
 > > $ git log --format=full
 > > commit 4162a51b273ba799a9d395dd70c45d96dba4e2ff
 > > Author: Frank N. Stein <franky@monster.com>
-> > Commit: Vlad Dracula <vlad@tran.sylvan.ia>
+> > Commit: Ryan Pepper <r.pepper@bham.ac.uk>
 > >
 > > Update Vlad's bio.
 > >
 > > commit aaa3271e5e26f75f11892718e83a3e2743fab8ea
-> > Author: Vlad Dracula <vlad@tran.sylvan.ia>
-> > Commit: Vlad Dracula <vlad@tran.sylvan.ia>
+> > Author: Ryan Pepper <r.pepper@bham.ac.uk>
+> > Commit: Ryan Pepper <r.pepper@bham.ac.uk>
 > >
 > > Vlad's initial bio.
 > > ~~~
