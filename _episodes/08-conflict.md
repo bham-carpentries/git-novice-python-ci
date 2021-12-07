@@ -36,24 +36,55 @@ $ cat functions.py
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+def sum_function(list):
+    """
+    A function which takes a list as an argument and
+    returns the sum
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
+
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
 Click on the `functions.py` file in the GitLab interface to view it and then click on the blue 'Edit' button. In the
-editor that's brought up, add a line to the end so it looks like this:
+editor that's brought up, change the docstring again:
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-This line added to GitLab copy
+def sum_function(list):
+    """
+    A method which takes a list as an argument and
+    returns the sum as a floating point number.
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
+
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
-Now let's make a different change to the **local** copy
+Now let's make a different change to the same line in the code on the **local** copy
 **without** updating from GitHub:
 
 ~~~
@@ -63,10 +94,25 @@ $ cat functions.py
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We added a different line in the local copy
+def sum_function(list):
+    """
+    A function which takes a list of integers and floating point 
+    numbers as an argument and returns the sum of them as a float.
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
+
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
@@ -142,14 +188,20 @@ $ cat functions.py
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+def sum_function(list):
+    """
 <<<<<<< HEAD
-We added a different line in the local copy
+    A method which takes a list as an argument and
+    returns the sum as a floating point number.
 =======
-This line added to GitLab copy
+    A function which takes a list of integers and floating point 
+    numbers as an argument and returns the sum of them as a float.
 >>>>>>> dabb4c8c450e8475aee9b14b4383acc99f42af1d
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
 ~~~
 {: .output}
 
@@ -164,7 +216,7 @@ and reconcile the changes.
 We can do anything we want: keep the change made in the local repository, keep
 the change made in the remote repository, write something new to replace both,
 or get rid of the change entirely.
-Let's replace both so that the file looks like this:
+Let's change it to use the first one:
 
 ~~~
 $ cat functions.py
@@ -172,10 +224,25 @@ $ cat functions.py
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We removed the conflict on this line
+def sum_function(list):
+    """
+    A method which takes a list as an argument and
+    returns the sum as a floating point number.
+
+    Parameters
+    ----------
+    list: list
+        Must be floats or ints
+
+    Returns
+    -------
+    float:
+        The sum of the elements in list
+    """
+    sum = 0.0
+    for item in list:
+        sum += item
+    return sum
 ~~~
 {: .output}
 
@@ -202,16 +269,16 @@ Changes to be committed:
 {: .output}
 
 ~~~
-$ git commit -m "Merge changes from GitHub"
+$ git commit -m "Merge changes from GitLab"
 ~~~
 {: .bash}
 
 ~~~
-[master 2abf2b1] Merge changes from GitHub
+[master 2abf2b1] Merge changes from GitLab
 ~~~
 {: .output}
 
-Now we can push our changes to GitHub:
+Now we can push our changes to GitLab:
 
 ~~~
 $ git push origin master
