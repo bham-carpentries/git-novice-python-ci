@@ -162,9 +162,35 @@ This slightly convoluted message tells us that:
 
 New changes can be added and then pushed to the branch just by running the standard commit and push commands now. It's worth noting that `git push` only applies to the branch that you are currently working on - if you make changes on "master", then switch to the "add-square-array-method" and run `git push`, the master changes will not be uploaded to GitLab.
 
-# Pull Requests
+On GitLab, you can switch branches by usin the little drop down menu:
+![Switch branch](../fig/gitlab-switch-branch.png)
 
-Pull requests can be used at this point to make the changes 
+# Pull (Merge) Requests
 
-TODO: ADD PR SCREENSHOTS
+Pull requests can be used at this point to put the changes on the 'master' copy of the repository.
 
+Go back to your repository on GitLab and click on the Merge Request bit of the menu (on a narrow screen it will hide the text, so you may need to widen your browser):
+![Merge request menu](../fig/gitlab-mr-menu.png)
+
+Click the button to create a new Merge Request:
+![Gitlab new Merge Request](../fig/gitlab-new-mr.png)
+
+Select the branch you did the extra work on, and then click 'Compare branches and continue'
+![Gitlab select source branch](../fig/gitlab-select-source-branch.png)
+
+You'll now see a page with quite a few options. You should generally write a description that tells you what the changes are. If you are working on a project with other people, 'Assignees' are people who will be implementing changes (i.e. you) and reviewers are people who will check your work for any mistakes, code that could be written more elegantly, etc. - it is very good practice to get your code reviewed before merging. 
+![Gitlab merge request form](../fig/gitlab-create-mr-form.png)
+
+After submitting the form, the merge request will be created:
+![Submitted MR](../fig/gitlab-submitted-mr.png) 
+
+You can click 'Commits' on the top for a list of the commits, but more useful is the 'Changes' button, which shows you any changes you have made:
+![Changeset](../fig/gitlab-mr-changeset.png) 
+
+
+Going back to the 'overview' section. We'll talk about the 'pipelines' part in the next lesson. You can press the 'merge' button to put your changes into the 'master' branch. Normall,y, when work a branch is merged, we'd consider it finished, and we can safely delete the branch because our changes are incorporated, so leave the box 'Delete source branch' ticked. The status of the merge request will change to 'Merged':
+![Merged](../fig/gitlab-merged.png)
+
+Clicking the file in the repository on the Master branch, we can see that the change has been incorporated:
+
+![Change incorporated](../fig/gitlab-change-incorporated.png)
